@@ -1,0 +1,3 @@
+- brisalo
+- selektiranje kompozita, baca nekakve exceptione, opcenito provjeriti te metode kod kompozita
+- ispis tijela, kod kompozita treba srediti da ispisuje i ono sto sadrzi
