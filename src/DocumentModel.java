@@ -124,6 +124,11 @@ public class DocumentModel {
 
     public int findSelectedHotPoint(GraphicalObject object, Point mousePoint) {
         int index = 0;
+
+        if (object.getNumberOfHotPoints() == 0) {
+            return -1;
+        }
+
         double distance = GeometryUtil.distanceFromPoint(object.getHotPoint(0), mousePoint);
 
         for (int i = 1; i < object.getNumberOfHotPoints(); i++) {

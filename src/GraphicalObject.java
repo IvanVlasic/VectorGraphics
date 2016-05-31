@@ -46,4 +46,6 @@ public interface GraphicalObject {
     void load(Stack<GraphicalObject> stack, String data);
 
     void save(List<String> rows);
+
+    boolean doesCollide(List<GraphicalObject> segments);
 }

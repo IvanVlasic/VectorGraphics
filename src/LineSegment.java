@@ -1,3 +1,4 @@
+import java.awt.geom.Line2D;
 import java.util.List;
 import java.util.Stack;
 
@@ -78,5 +79,23 @@ public class LineSegment extends AbstractGraphicalObject {
 
         stack.push(new LineSegment(new Point[]{p1, p2}));
 
+    }
+
+    @Override
+    public boolean doesCollide(List<GraphicalObject> segments) {
+        Point p1 = getHotPoint(0);
+        Point p2 = getHotPoint(1);
+        Line2D line1 = new Line2D.Float(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+
+        for (GraphicalObject segment: segments) {
+            Point p3 = segment.getHotPoint(0);
+            Point p4 = segment.getHotPoint(1);
+            Line2D line2 = new Line2D.Float(p3.getX(), p3.getY(), p4.getX(), p4.getY());
+            if (line1.intersectsLine(line2)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

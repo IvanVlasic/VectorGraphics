@@ -38,7 +38,7 @@ public class SelectShapeState extends IdleState {
 
     @Override
     public void mouseDragged(Point mousePoint) {
-        if (model.getSelectedObjects().size() != 1 && !(model.getSelectedObjects().get(0) instanceof CompositeShape)) {
+        if (model.getSelectedObjects().size() != 1) {
             return;
         }
 

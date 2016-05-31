@@ -1,3 +1,4 @@
+import java.awt.geom.Ellipse2D;
 import java.util.List;
 import java.util.Stack;
 
@@ -123,6 +124,24 @@ public class Oval extends AbstractGraphicalObject {
         }
 
         rows.add(b.toString());
+    }
+
+    @Override
+    public boolean doesCollide(List<GraphicalObject> segments) {
+        Rectangle rect = getBoundingBox();
+        Ellipse2D ellipse = new Ellipse2D.Float(rect.getX(), rect.getY(),  rect.getWidth(),rect.getHeight());
+
+        for (GraphicalObject object : segments) {
+            Point p1 = object.getHotPoint(0);
+            Point p2 = object.getHotPoint(1);
+
+            if (ellipse.contains(p1.getX(), p1.getY()) || ellipse.contains(p2.getX(), p2.getY())) {
+                return true;
+            }
+        }
+
+
+        return false;
     }
 }
 

@@ -183,4 +183,14 @@ public class CompositeShape implements GraphicalObject {
         String row = getShapeID() + " " + children.size();
         rows.add(row);
     }
+
+    @Override
+    public boolean doesCollide(List<GraphicalObject> segments) {
+        for (GraphicalObject object : children) {
+            if (object.doesCollide(segments)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

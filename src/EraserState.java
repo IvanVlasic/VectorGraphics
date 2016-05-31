@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -24,6 +25,10 @@ public class EraserState extends IdleState {
             model.removeGraphicalObject(object);
         }
 
+        for (GraphicalObject object: intersection()) {
+            model.removeGraphicalObject(object);
+        }
+
 
     }
 
@@ -39,6 +44,17 @@ public class EraserState extends IdleState {
 
         }
 
+    }
+
+    private List<GraphicalObject> intersection() {
+        List<GraphicalObject> intersection = new ArrayList<>();
+        for (GraphicalObject object: model.list()) {
+            if (object.doesCollide(segments)) {
+                intersection.add(object);
+            }
+        }
+
+        return intersection;
     }
 
 
