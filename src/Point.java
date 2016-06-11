@@ -29,4 +29,20 @@ public class Point {
     public Point copy() {
         return new Point(x, y);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+
+        if (!(o instanceof Point)) {
+            return false;
+        }
+
+        Point other = (Point) o;
+        return x == other.x && y == other.y;
+    }
+
+
 }
